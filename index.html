@@ -101,8 +101,10 @@
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Solutions
                         </a>
-                        <div class="dropdown-menu w-100 p-4 border-0 shadow-lg mt-2" aria-labelledby="solutionsDropdown"
-                            style="max-width: 900px;">
+
+                        <div class="dropdown-menu w-100 p-4 border-0 shadow-lg mt-2 mx-auto "
+                            aria-labelledby="solutionsDropdown" style="max-width: 900px; ">
+
                             <div class="row">
                                 <div class="col-md-4 border-end">
                                     <h5 class="fw-bold">Skysnag's Solutions</h5>
@@ -202,11 +204,12 @@
         <h1 class="display-5 fw-bold">Phishing URL checker</h1>
         <p class="lead mb-4">Our phishing URL checker detects if a URL is malicious or contains a phishing link.</p>
         <div class="url-checker-box">
+
+            <p class="text-muted mt-2 text-center">Detect if a URL has a phishing link or is malicious.</p>
             <form class="d-flex">
                 <input type="text" class="form-control me-2" placeholder="example.com">
                 <button class="btn btn-primary" type="submit">Scan</button>
             </form>
-            <p class="text-muted mt-2 text-start">Detect if a URL has a phishing link or is malicious.</p>
         </div>
     </section>
 
@@ -311,6 +314,59 @@
             </div>
         </div>
     </div>
+
+    <div class="container my-5 text-center">
+        <!-- Angka total -->
+        <h2 class="fw-bold mb-3">
+            Sudah sebanyak <span id="countUp" class="text-primary">0</span> URL diperiksa dalam website ini
+        </h2>
+        <p class="text-muted mb-4">Meliputi berbagai ekstensi domain yang sering digunakan</p>
+
+        <!-- Statistik ekstensi domain -->
+        <div class="row justify-content-center gy-3">
+            <!-- .com -->
+            <div class="col-6 col-sm-4 col-md-2">
+                <div class="border rounded shadow-sm py-3 px-2 bg-light">
+                    <div class="fs-3 text-primary mb-1">
+                        <i class="bi bi-globe2"></i>
+                    </div>
+                    <h6 class="mb-0">.com</h6>
+                    <small class="text-muted">820 URL</small>
+                </div>
+            </div>
+            <!-- .xyz -->
+            <div class="col-6 col-sm-4 col-md-2">
+                <div class="border rounded shadow-sm py-3 px-2 bg-light">
+                    <div class="fs-3 text-warning mb-1">
+                        <i class="bi bi-globe2"></i>
+                    </div>
+                    <h6 class="mb-0">.xyz</h6>
+                    <small class="text-muted">180 URL</small>
+                </div>
+            </div>
+            <!-- .my.id -->
+            <div class="col-6 col-sm-4 col-md-2">
+                <div class="border rounded shadow-sm py-3 px-2 bg-light">
+                    <div class="fs-3 text-success mb-1">
+                        <i class="bi bi-globe2"></i>
+                    </div>
+                    <h6 class="mb-0">.my.id</h6>
+                    <small class="text-muted">90 URL</small>
+                </div>
+            </div>
+            <!-- .net -->
+            <div class="col-6 col-sm-4 col-md-2">
+                <div class="border rounded shadow-sm py-3 px-2 bg-light">
+                    <div class="fs-3 text-danger mb-1">
+                        <i class="bi bi-globe2"></i>
+                    </div>
+                    <h6 class="mb-0">.net</h6>
+                    <small class="text-muted">70 URL</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="container my-5">
         <div class="row" style="">
@@ -545,6 +601,25 @@
                     }]
                 }
             });
+        });
+    </script>
+    <script>
+        function animateCountUp(id, target, duration) {
+            let current = 0;
+            const step = Math.ceil(target / (duration / 20));
+            const el = document.getElementById(id);
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                el.innerText = current.toLocaleString();
+            }, 20);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            animateCountUp("countUp", 1400, 5000); // dari 0 ke 1400 dalam 2 detik
         });
     </script>
 
